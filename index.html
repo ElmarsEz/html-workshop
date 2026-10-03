@@ -2,24 +2,548 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>User Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mars One-way Trip Agency</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <h1>User Information</h1>
+<div class="floor-grid"></div>
 
-    <form action="https://httpbin.org/get" method="GET">
-        <label>Name:</label><br>
-        <input type="text" name="name"><br><br>
+<div class="container">
 
-        <label>Surname:</label><br>
-        <input type="text" name="surname"><br><br>
+    <div class="terminal">
+        SYSTEM STATUS: ACTIVE<br>
+        DESTINATION: MARS COLONY 01<br>
+        RETURN PROTOCOL: NOT AVAILABLE
+    </div>
 
-        <label>City:</label><br>
-        <input type="text" name="city"><br><br>
+    <h1>Mars One-Way Agency</h1>
 
-        <button type="submit">Submit</button>
+    <p class="subtitle">
+        Deep Space Civilian Recruitment Program
+    </p>
+
+    <form
+        id="marsForm"
+        action="https://httpbin.org/get"
+        method="get"
+    >
+
+        <h2>Personal Data</h2>
+
+        <label for="name">Full name:</label>
+        <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Ellen Spacewalker"
+            required
+        >
+
+        <br><br>
+
+        <label for="email">Email:</label>
+        <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="crew@space.com"
+            required
+        >
+
+        <br><br>
+
+        <label for="birthdate">Date of birth:</label>
+        <input
+            type="date"
+            id="birthdate"
+            name="birthdate"
+        >
+
+        <br><br>
+
+        <label for="departure">
+            Preferred departure date and time:
+        </label>
+
+        <input
+            type="datetime-local"
+            id="departure"
+            name="departure"
+        >
+
+
+        <h2>Mission Information</h2>
+
+        <label for="experience">
+            Years of space experience:
+        </label>
+
+        <input
+            type="number"
+            id="experience"
+            name="experience"
+            min="0"
+            max="100"
+            value="0"
+        >
+
+        <br><br>
+
+        <label for="risk">
+            Psychological readiness for a one-way mission:
+        </label>
+
+        <input
+            type="range"
+            id="risk"
+            name="risk"
+            min="0"
+            max="100"
+            value="50"
+        >
+
+
+        <h2>Cryo Pod Selection</h2>
+
+        <div class="choice">
+            <input
+                type="radio"
+                id="economy"
+                name="seat"
+                value="economy"
+                checked
+            >
+
+            <label for="economy">
+                Standard Cryo Pod
+            </label>
+        </div>
+
+        <div class="choice">
+            <input
+                type="radio"
+                id="premium"
+                name="seat"
+                value="premium"
+            >
+
+            <label for="premium">
+                Reinforced Cryo Pod
+            </label>
+        </div>
+
+        <div class="choice">
+            <input
+                type="radio"
+                id="cargo"
+                name="seat"
+                value="cargo"
+            >
+
+            <label for="cargo">
+                Cargo Bay Pod
+            </label>
+        </div>
+
+
+        <h2>Survival Equipment</h2>
+
+        <div class="choice">
+            <input
+                type="checkbox"
+                id="helmet"
+                name="equipment"
+                value="helmet"
+            >
+
+            <label for="helmet">
+                Reinforced space helmet
+            </label>
+        </div>
+
+        <div class="choice">
+            <input
+                type="checkbox"
+                id="oxygen"
+                name="equipment"
+                value="oxygen"
+            >
+
+            <label for="oxygen">
+                Emergency oxygen tank
+            </label>
+        </div>
+
+        <div class="choice">
+            <input
+                type="checkbox"
+                id="scanner"
+                name="equipment"
+                value="scanner"
+            >
+
+            <label for="scanner">
+                Biological motion scanner
+            </label>
+        </div>
+
+        <div class="choice">
+            <input
+                type="checkbox"
+                id="flamethrower"
+                name="equipment"
+                value="flamethrower"
+            >
+
+            <label for="flamethrower">
+                Industrial flame tool
+            </label>
+        </div>
+
+
+        <h2>Identification</h2>
+
+        <label for="photo">
+            Upload crew identification photo:
+        </label>
+
+        <input
+            type="file"
+            id="photo"
+            name="photo"
+        >
+
+        <br><br>
+
+        <label for="suitColor">
+            Spacesuit identification color:
+        </label>
+
+        <br>
+
+        <input
+            type="color"
+            id="suitColor"
+            name="suitColor"
+            value="#78ff9b"
+        >
+
+
+        <h2>Colony Assignment</h2>
+
+        <div class="job-roulette">
+
+            <p class="roulette-title">
+                Mars HR will decide your colony role
+            </p>
+
+            <div class="wheel-wrapper">
+
+                <div class="wheel-pointer"></div>
+
+                <div class="job-wheel" id="jobWheel">
+
+                    <div class="wheel-label label-1">
+                        Engineer
+                    </div>
+
+                    <div class="wheel-label label-2">
+                        Miner
+                    </div>
+
+                    <div class="wheel-label label-3">
+                        Xenobiology
+                    </div>
+
+                    <div class="wheel-label label-4">
+                        Security
+                    </div>
+
+                    <div class="wheel-label label-5">
+                        Farmer
+                    </div>
+
+                    <div class="wheel-label label-6">
+                        Maintenance
+                    </div>
+
+                    <div class="wheel-label label-7">
+                        Janitor
+                    </div>
+
+                    <div class="wheel-label label-8">
+                        Potato
+                    </div>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="roulette-button"
+                    id="spinJob"
+                >
+                    SPIN
+                </button>
+
+            </div>
+
+            <p id="rouletteStatus" class="roulette-status">
+                Waiting for Mars HR...
+            </p>
+
+            <p id="jobResult" class="job-result">
+                ASSIGNED ROLE: NOT ASSIGNED
+            </p>
+
+            <input
+                type="hidden"
+                id="job"
+                name="job"
+                value=""
+            >
+
+        </div>
+
+
+        <br><br>
+
+        <label for="reason">
+            Why should the colony select you?
+        </label>
+
+        <textarea
+            id="reason"
+            name="reason"
+            rows="5"
+            placeholder="Explain why you are prepared for deep space isolation..."
+        ></textarea>
+
+
+        <div class="warning">
+            WARNING: Unknown biological organisms may be present.
+            The agency accepts no responsibility for parasitic lifeforms,
+            damaged spacecraft, or disappearing crew members.
+        </div>
+
+
+        <div class="buttons">
+
+            <button type="submit">
+                Send Application GET
+            </button>
+
+            <button
+                type="submit"
+                formmethod="post"
+                formaction="https://httpbin.org/post"
+            >
+                Send Application POST
+            </button>
+
+            <button
+                class="emergency"
+                type="submit"
+                formaction="https://httpbin.org/anything/emergency-evacuation"
+            >
+                Emergency Transmission
+            </button>
+
+        </div>
+
     </form>
+
+
+    <div class="outside-input">
+
+        <label for="alienName">
+            If infected, choose a name for the organism:
+        </label>
+
+        <input
+            type="text"
+            id="alienName"
+            name="alienName"
+            form="marsForm"
+            placeholder="Specimen X-17"
+        >
+
+    </div>
+
+</div>
+
+
+<script>
+
+    /* ----------------------------------
+       CHANGE ACCENT COLOR
+    ---------------------------------- */
+
+    const suitColor =
+        document.getElementById("suitColor");
+
+    suitColor.addEventListener("input", function () {
+
+        document.documentElement.style.setProperty(
+            "--accent",
+            suitColor.value
+        );
+
+    });
+
+
+    /* ----------------------------------
+       JOB ROULETTE
+    ---------------------------------- */
+
+    const jobs = [
+        {
+            name: "Colony Engineer",
+            value: "engineer"
+        },
+        {
+            name: "Mineral Extraction Specialist",
+            value: "miner"
+        },
+        {
+            name: "Xenobiology Researcher",
+            value: "scientist"
+        },
+        {
+            name: "Colony Security",
+            value: "security"
+        },
+        {
+            name: "Hydroponics Farmer",
+            value: "farmer"
+        },
+        {
+            name: "Ventilation Maintenance Technician",
+            value: "maintenance"
+        },
+        {
+            name: "Space Janitor",
+            value: "janitor"
+        },
+        {
+            name: "Emergency Potato Specialist",
+            value: "potato"
+        }
+    ];
+
+
+    const wheel =
+        document.getElementById("jobWheel");
+
+    const spinButton =
+        document.getElementById("spinJob");
+
+    const jobInput =
+        document.getElementById("job");
+
+    const jobResult =
+        document.getElementById("jobResult");
+
+    const rouletteStatus =
+        document.getElementById("rouletteStatus");
+
+
+    let currentRotation = 0;
+    let spinning = false;
+
+
+    spinButton.addEventListener("click", function () {
+
+        if (spinning) {
+            return;
+        }
+
+        spinning = true;
+
+        spinButton.disabled = true;
+
+        rouletteStatus.textContent =
+            "MARS HR IS DECIDING YOUR FUTURE...";
+
+        jobResult.textContent =
+            "ASSIGNED ROLE: CALCULATING...";
+
+
+        const selectedIndex =
+            Math.floor(
+                Math.random() * jobs.length
+            );
+
+
+        const segmentAngle =
+            360 / jobs.length;
+
+
+        const selectedAngle =
+            selectedIndex * segmentAngle;
+
+
+        const extraSpins =
+            5 + Math.floor(
+                Math.random() * 4
+            );
+
+
+        const stopAngle =
+            360
+            - selectedAngle
+            - segmentAngle / 2;
+
+
+        currentRotation +=
+            extraSpins * 360
+            + stopAngle;
+
+
+        wheel.style.transform =
+            "rotate("
+            + currentRotation
+            + "deg)";
+
+
+        setTimeout(function () {
+
+            const selectedJob =
+                jobs[selectedIndex];
+
+
+            jobInput.value =
+                selectedJob.value;
+
+
+            jobResult.textContent =
+                "ASSIGNED ROLE: "
+                + selectedJob.name;
+
+
+            rouletteStatus.textContent =
+                "ASSIGNMENT CONFIRMED.";
+
+
+            spinButton.textContent =
+                "SPIN AGAIN";
+
+
+            spinButton.disabled =
+                false;
+
+
+            spinning =
+                false;
+
+        }, 3200);
+
+    });
+
+</script>
 
 </body>
 </html>
